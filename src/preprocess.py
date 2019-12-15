@@ -42,5 +42,5 @@ with open('data/reviews.txt', 'w') as txt_file:
 					helpful_total = 0
 				line = [entry['user_id'], review['item_id'], funny, helpful_yes, helpful_total, review['recommend'], review['review']]
 				csv_file.write('\t'.join(list(map(str, line))) + '\n')
-				txt_file.write(review['review'] + '\n')
+				txt_file.write(review['review'].strip() + '\n')
 
