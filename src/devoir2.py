@@ -19,8 +19,8 @@ with open('data/cleaned.txt', 'r') as file:
 
 
 def find_pattern(reviews, find_dep, head_text, other_text, other_dep, filename):
-	path = f'out/{filename}'
-	with open(path, 'w') as file:
+	path = 'out/' + filename
+	with open(path, 'w+') as file:
 		for i, review in enumerate(tqdm(reviews)):
 			rev = nlp(review.strip())
 
@@ -42,8 +42,8 @@ def find_pattern(reviews, find_dep, head_text, other_text, other_dep, filename):
 
 
 def find_pattern_chain(reviews, find_dep, head_text, headhead_text, filename):
-	path = f'out/{filename}'
-	with open(path, 'w') as file:
+	path = 'out/' + filename
+	with open(path, 'w+') as file:
 		for i, review in enumerate(tqdm(reviews)):
 			rev = nlp(review.strip())
 
@@ -62,8 +62,8 @@ def find_pattern_chain(reviews, find_dep, head_text, headhead_text, filename):
 
 # find game names
 find_pattern(reviews, find_dep='nsubj', head_text=['is'], other_text='game', other_dep='attr', filename='[nsubj]_is_a_game.txt')
-find_pattern(reviews, find_dep='compound', head_text=['franchise', 'series'], other_text='the', other_dep='det', filename='the_[compound]_(franchise/series).txt')
-find_pattern_chain(reviews, find_dep='pobj', head_text=['like'], headhead_text=['game', "it's"], filename="(game_like/it's_like)_[pobj].txt")
+find_pattern(reviews, find_dep='compound', head_text=['franchise', 'series'], other_text='the', other_dep='det', filename='the_[compound]_(franchise-series).txt')
+find_pattern_chain(reviews, find_dep='pobj', head_text=['like'], headhead_text=['game', "it's"], filename="(game_like-it's_like)_[pobj].txt")
 
 # find types and adjectives
 find_pattern_chain(reviews, find_dep='compound', head_text=['game'], headhead_text=['is'], filename='is_a_[compound]_game.txt')
