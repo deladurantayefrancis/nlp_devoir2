@@ -22,8 +22,6 @@ cat out/\[nsubj\]_is_a_game.txt |\
     grep -Pvi "(?!['-.:&])[[:punct:]]" |\
     grep -Evi '^.{,3}$' |\
     grep -Evi '([[:punct:]].*){4,}' |\
-    # tr '[[:upper:]]' '[[:lower:]]' |\
+    tr '[[:upper:]]' '[[:lower:]]' |\
     sort |\
     uniq > pattern1_cleaned
-    # uniq -c |\
-    # sort -k1,1nr > pattern1_cleaned
