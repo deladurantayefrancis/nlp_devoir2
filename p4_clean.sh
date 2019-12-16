@@ -13,6 +13,8 @@ cat out/is_a_\[compound\]_game.txt |\
     grep -Evi 'gr(eat|8)' |\
     grep -Evi 'quality' |\
     grep -Evi 're?ally' |\
+
+    # unrelated to the type of the game
     grep -vwi 'base' |\
     grep -vwi 'core' |\
     grep -vwi 'end' |\
